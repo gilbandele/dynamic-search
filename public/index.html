@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	  <meta charset="utf-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <title>Dynamic Search</title>
+	  <link href="../assets/stylesheets/bootstrap.min.css" rel="stylesheet">
+	  <link href="../assets/stylesheets/bootstrap-theme.min.css" rel="stylesheet">
+	  <link href="../assets/stylesheets/bootstrap-social.css" rel="stylesheet">
+	  <link href="../assets/stylesheets/font-awesome.min.css" rel="stylesheet">
+	  <link href="../assets/stylesheets/mystyles.css" rel="stylesheet">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	</head>
+	<body>
+	  <br />
+	  <div id="app">
+	  	<input id="searchbar" type = "text"></input> &nbsp; <button type="button">Submit</button>
+	  	<div id="results">
+	  	</div>
+	  </div>	
+	  <script src="../assets/js/jquery.min.js"></script>
+	  <script src="../assets/js/bootstrap.min.js"></script>
+	  <script>
+			var searchBar = document.getElementById('searchbar');
+
+			searchBar.onkeyup = function(){
+			  //document.getElementById('printchatbox').innerHTML = inputBox.value;
+			  console.log(searchBar.value);
+/*			 $.getJSON("demo_ajax_json.js", function(result){
+	        $.each(result, function(i, field){
+	          $("div").append(field + " ");
+	        });
+	    	});*/
+			}
+	  </script>
+	</body>
+</html>
