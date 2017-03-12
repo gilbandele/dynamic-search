@@ -5,11 +5,11 @@ var mysql = require('mysql');
 
 /** Create Connection Object **/
 var connection = mysql.createConnection({
-  host: '138.68.51.129',
+  host: '104.196.142.35',
   port: 3306,
-  user: 'appuser',
-  password: 'APP_pass1',
-  database: 'cassydev'
+  user: 'root',
+  password: '',
+  database: 'gilbandele'
 });
 
 module.exports = connection;

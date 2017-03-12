@@ -10,29 +10,36 @@
 	  <link href="../assets/stylesheets/bootstrap-social.css" rel="stylesheet">
 	  <link href="../assets/stylesheets/font-awesome.min.css" rel="stylesheet">
 	  <link href="../assets/stylesheets/mystyles.css" rel="stylesheet">
-	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	</head>
 	<body>
 	  <br />
 	  <div id="app">
-	  	<input id="searchbar" type = "text"></input> &nbsp; <button type="button">Submit</button>
-	  	<div id="results">
-	  	</div>
+	  	<input id="searchbar" type = "text" list='listid'></input>
+		  	<datalist id='listid'>
+    		</datalist>
 	  </div>	
 	  <script src="../assets/js/jquery.min.js"></script>
 	  <script src="../assets/js/bootstrap.min.js"></script>
 	  <script>
-			var searchBar = document.getElementById('searchbar');
+			$("#searchbar").on("input", function(event) {
+				var text = $("#searchbar").val();
 
-			searchBar.onkeyup = function(){
-			  //document.getElementById('printchatbox').innerHTML = inputBox.value;
-			  console.log(searchBar.value);
-/*			 $.getJSON("demo_ajax_json.js", function(result){
-	        $.each(result, function(i, field){
-	          $("div").append(field + " ");
-	        });
-	    	});*/
-			}
+				if (text.length > 0) {
+					$.get("/products/"+text, function(res) {
+						var dataList = $("#listid");
+						//Clear previous calls
+						dataList.empty();
+						
+						if(res.length > 0) {
+							for(var i=0, len=res.length; i<len; i++) {
+								var opt = $("<option></option>").attr("value", res[i].list_name);
+								dataList.append(opt);
+							}
+						}
+					},"json");
+				}
+			});
 	  </script>
 	</body>
 </html>
